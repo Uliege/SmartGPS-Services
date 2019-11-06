@@ -9,7 +9,7 @@
 	
 	//Database
 	define("SERVER_NAME", "70.40.217.137");
-	define("DATA_BASE", "gmoncayo_smart_gps");
+	define("DATA_BASE", "gmoncayo_smart_gps_v2");
 	define("USERNAME_DB", "gmoncayo_gps");
 	define("PASSWORD_DB", "smart_gps");
  
