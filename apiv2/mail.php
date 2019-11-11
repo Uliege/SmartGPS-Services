@@ -1,4 +1,4 @@
-﻿ <?php
+ <?php
 
 require("constantes.php");
 require("phpmailer/class.phpmailer.php");
@@ -57,7 +57,7 @@ class Mail{
 
 	function createLink($value){
 		
-		$link = "http://gmoncayoresearch.com/SmartGPS/api/validate.php?rsp=hd5hrt3fd6&rgs=";
+		$link = "http://gmoncayoresearch.com/SmartGPS/apiv2/validate.php?rsp=hd5hrt3fd6&rgs=";
 		$link .= $value;
 		
 		return $link;
