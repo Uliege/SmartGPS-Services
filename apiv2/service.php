@@ -187,6 +187,35 @@ class Service{
 		$mysqli->autocommit(TRUE);
 		return 'OK';
 	}
+	
+	function setNotificationAnswer($mysqli, $dspId, $rpPreguntaNotif, $rpRespuestaNotif, $rpRespNotifDate){
+		global $impl;
+		$mysqli->autocommit(FALSE);
+		$mysqli->begin_transaction(); 
+
+		$dsp = $impl->selectDevice($mysqli, $dspId);
+		$dspToken = $dsp['DSP_TOKEN'];
+		
+		if($dspToken == "1"){
+			
+			$pscId =  $impl->insertNotificationAnswer($mysqli, $rpPreguntaNotif, $rpRespuestaNotif, $rpRespNotifDate);
+			if($pscId == 0){
+				$mysqli->rollback();
+				$mysqli->autocommit(TRUE);
+				return "Error al ingresar la información del dispositivo ".$dspId;
+			}
+
+		}else{
+
+			$mysqli->commit();
+			$mysqli->autocommit(TRUE);
+			return 'Fail';
+		}
+
+		$mysqli->commit();
+		$mysqli->autocommit(TRUE);
+		return 'OK';
+	}	
 
 	function updateDevice($mysqli, $dspId){ 	
 		global $impl;

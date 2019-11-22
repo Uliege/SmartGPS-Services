@@ -268,6 +268,17 @@ class Implementation{
 		    return FALSE;
 		}
 	}
+	
+	function insertNotificationAnswer($mysqli, $rpPreguntaNotif, $rpRespuestaNotif, $rpRespNotifDate){
+		$query = "INSERT INTO NOTIF_DATA (pregunta, respuesta, fecha_resp_notificacion) VALUES ($rpPreguntaNotif, $rpRespuestaNotif, $rpRespNotifDate);";
+		if ($mysqli->query($query) === TRUE) {
+		    $last_id = $mysqli->insert_id;
+		    return $last_id;
+		} else {
+		    echo "Error: " . $query. "<br>" . $mysqli->error;
+		    return FALSE;
+		}
+	}
 
 	function updateDevice($mysqli, $dspId){ 
 		global $util;
