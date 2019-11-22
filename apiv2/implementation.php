@@ -269,9 +269,9 @@ class Implementation{
 		}
 	}
 	
-	function insertNotificationAnswer($mysqli, $rpPreguntaNotif, $rpRespuestaNotif, $rpRespNotifDate){
+	function insertNotificationAnswer($mysqli, $rpPreguntaNotif, $rpRespuestaNotif, $rpRespNotifDate, $dspId){
 		global $util;
-		$query = "INSERT INTO NOTIF_DATA (pregunta, respuesta, fecha_resp_notificacion) VALUES (".$util->formatStringValue($rpPreguntaNotif).", ".$util->formatStringValue($rpRespuestaNotif).", ".$util->formatStringValue($rpRespNotifDate).");";
+		$query = "INSERT INTO NOTIF_DATA (pregunta, respuesta, fecha_resp_notificacion, dspId) VALUES (".$util->formatStringValue($rpPreguntaNotif).", ".$util->formatStringValue($rpRespuestaNotif).", ".$util->formatStringValue($rpRespNotifDate).", $dspId);";
 		if ($mysqli->query($query) === TRUE) {
 		    $last_id = $mysqli->insert_id;
 		    return $last_id;

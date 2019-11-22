@@ -198,7 +198,7 @@ class Service{
 		
 		if($dspToken == "1"){
 			
-			$pscId =  $impl->insertNotificationAnswer($mysqli, $rpPreguntaNotif, $rpRespuestaNotif, $rpRespNotifDate);
+			$pscId =  $impl->insertNotificationAnswer($mysqli, $rpPreguntaNotif, $rpRespuestaNotif, $rpRespNotifDate, $dspId);
 			if($pscId == 0){
 				$mysqli->rollback();
 				$mysqli->autocommit(TRUE);
