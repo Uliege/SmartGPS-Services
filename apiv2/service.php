@@ -215,7 +215,17 @@ class Service{
 		$mysqli->commit();
 		$mysqli->autocommit(TRUE);
 		return 'OK';
-	}	
+	}
+	
+	function getNotificationQuestion($mysqli, $pregId){
+		global $impl;
+		$listPreg = $impl->selectQuestion($mysqli, $pregId);
+		if($listPreg !== FALSE){
+			return $listPreg;
+		}else{
+			return "Error";
+		}
+	}
 
 	function updateDevice($mysqli, $dspId){ 	
 		global $impl;

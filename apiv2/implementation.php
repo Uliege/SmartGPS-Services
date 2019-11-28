@@ -280,6 +280,39 @@ class Implementation{
 		    return FALSE;
 		}
 	}
+	
+	function selectQuestion($mysqli, $pregId){
+		//global $util;
+		$query = " SELECT 
+		
+				PR.id_pregunta,
+				PR.descripcion_pregunta,
+				RP.respId,
+				RP.descripcion_respuesta
+				
+				FROM 
+				
+				NOTIF_PREGUNTA PR, 
+				NOTIF_RESPUESTA RP
+				
+				WHERE 
+				
+				PR.id_pregunta = RP.id_pregunta 
+				AND PR.id_pregunta = $pregId";
+
+		$result = $mysqli->query($query);
+
+		if ($result->num_rows > 0) {
+			$retorno = Array();
+			while($row = $result->fetch_assoc()) {
+				$retorno[] = $row; 
+    			}
+			return $retorno;
+		} else {
+		    echo "Error: " . $query. "<br>" . $mysqli->error;
+		    return FALSE;
+		}
+	}
 
 	function updateDevice($mysqli, $dspId){ 
 		global $util;

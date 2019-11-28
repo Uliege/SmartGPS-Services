@@ -32,6 +32,9 @@ $sensorInfo = $_POST['sensorInfo'];
 
 $appName = $_POST['appName'];
 
+//Ingreso del ID de la pregunta
+$pregId = $_POST['pregId'];
+
 //Ingreso de las respuestas de las notificaciones
 $rpPreguntaNotif = $_POST['rpPregunta'];
 $rpRespuestaNotif = $_POST['rpRespuesta'];
@@ -100,6 +103,13 @@ switch ($type) {
         break;
 	case "setNotificationAnswer":
 		$contenido = $service->setNotificationAnswer($mysqli, $dspId, $rpPreguntaNotif, $rpRespuestaNotif, $rpRespNotifDate);
+		$contenido = json_encode($contenido);
+		echo $contenido;
+		$contenido = null;
+        $type = null;
+        break;
+	case "getNotificationQuestion":
+		$contenido = $service->getNotificationQuestion($mysqli, $pregId);
 		$contenido = json_encode($contenido);
 		echo $contenido;
 		$contenido = null;
